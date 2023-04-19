@@ -1,4 +1,4 @@
-export interface WordData {
+export type WordData = {
   word: string;
   phonetics: {
     text: string;
@@ -15,7 +15,7 @@ export interface WordData {
   sourceUrls: string[];
 }
 
-export interface ErrorWord {
+export type ErrorWord = {
   title: string;
   message: string;
   resolution: string;

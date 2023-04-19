@@ -3,10 +3,19 @@ import { WordData, ErrorWord } from './dictionaryService'
 import fetchWordData from './dictionaryService'
 
 async function main() {
-  const wordDataList = await fetchWordData('hello');
-  // if wordData.word then valid 
-  // if wordData.message, wordData.resolution, wordData.title then invalid  
-  console.log(wordDataList);
+  const responseData = await fetchWordData('hello');
+
+  if (responseData instanceof Array)  {
+    const [ WORDDATA ] = responseData;
+    console.log(WORDDATA); 
+
+    
+
+
+  } else {
+    const WORDERROR: ErrorWord = responseData;
+    console.log(WORDERROR)
+  }
 }
 
 window.onload = () => {
