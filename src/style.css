@@ -14,44 +14,83 @@
 .rel { position: relative; }
 .abs { position: absolute; }
 
-/*
---light: #ffffff;
---dark: #757575;
---purple: #a445ed;
-*/
-
+body {
+  transition: all .25s;
+}
 body.light-theme {
-  --high-contast: #757575;
+  --bg: #fff;
+  --grey: #757575;
+  --white: #fff;
+  --primary: #a445ed;
+  --high-contrast: #1F1F1F;
+  --mid-contrast: #3A3A3A; 
+  --low-contrast: #E9E9E9;
+  /* --mid-contrast:  */
+  background-color: var(--bg);
+  color: var(--high-contrast);
+}
+body.dark-theme {
+  --white: #fff;
+  --primary: #a445ed;
+  --grey: #757575;
+  --bg: #050505;
+  background-color: var(--bg);
   /* --mid-contrast:  */
 }
 
 #app {
-  padding: 1.5rem;
+  max-width: 1000px;
+  padding: 3rem 1.5rem;
+  margin: 0 auto;
 }
 
 header .logo { 
   margin-right: auto;
 }
 header .font-selector {
-  color: var(--high-contast);
-  border-right: 1px solid black;
-  width: 5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  border-right: 1px solid var(--low-contrast);
+  padding-right: 1rem;
 }
-header .rel {
-  background-color: #fff;
+header .font-selector > span {
+  padding-right: 10px;
 }
-header .theme-toggle .rel > .abs {
-  height: 1.5rem;
-  width: 1.5rem;
-  border-radius: 50%;
-  background-color: #fff;
-}
-header .theme-toggle .rel {
-  border-radius: 50%;
+header .theme-toggle .toggle-button {
+  border-radius: 30px;
+  height: 25px;
   width: 50px;
-  height: 50px;
-  background-color: black;
+  align-items: center;
+  transition: all .25s;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+header .theme-toggle .light-theme {
+  background-color: var(--grey);
+}
+header .theme-toggle .dark-theme {
+  background-color: var(--primary);
+}
+header .theme-toggle .toggle-button > .slider {
+  margin: 0 8px;
+  height: 19px;
+  width: 19px;
+  border-radius: 50%;
+  transition: all .25s;
+  cursor: pointer;
+  background-color: var(--white);
+}
+header .theme-toggle .light-theme .slider {
+  transform: translateX(-4px);
+}
+header .theme-toggle .dark-theme .slider {
+  transform: translateX(19px);
 }
 header .theme-toggle svg {
   display: block;
+}
+
+@media (max-width: 1024px) {
+  #app {width: 100%;}
 }
