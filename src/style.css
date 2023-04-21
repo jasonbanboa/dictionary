@@ -6,6 +6,7 @@
 }
 
 button {border: none; background-color: transparent; outline: none; border: none; cursor: pointer;}
+li::marker { color: var(--primary);}
 
 .flex { display: flex; }
 .gap-1 { gap: 1rem; }
@@ -25,7 +26,7 @@ body.light-theme {
   --white: #fff;
   --primary: #a445ed;
   --high-contrast: #1F1F1F;
-  --mid-contrast: #3A3A3A; 
+  --mid-contrast: #292929; 
   --low-contrast: #E9E9E9;
   --lowest-contrast: #f3f3f3;
   /* --mid-contrast:  */
@@ -108,6 +109,7 @@ main form input {
   outline: none;
   height: 50px;
   padding-left: 20px;
+  padding-right: 50px;
 }
 main form .abs {
   right: 20px;
@@ -121,10 +123,11 @@ main .search-word-head {
 }
 main .search-word-head h2 {
   font-size: 3rem;
+  word-break: break-all;
   margin-bottom: 7px;
 }
 main .search-word-head .pronunciation {
-  font-size: 1.2rem;
+  font-size: 1.25rem;
 }
 main .search-word-head .audio {
   cursor: pointer;
@@ -134,6 +137,41 @@ main .search-word-head .audio svg {
   height: 60px;
 }
 
-/* @media (max-width: 750px) {
-  #app {width: 100%;}
-} */
+main .meaning {
+  margin-top: 2rem;
+}
+main .meaning .part-of-speech {
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: var(--high-contrast); 
+}
+main .meaning .part-of-speech::before {
+  position: absolute;
+  content: '';
+  background-color: var(--low-contrast);
+  right: 0;
+  left: 5rem;
+  top: 50%;
+  transform: translateY(100%);
+  height: 2px;
+}
+main .meaning .decorator {
+  color: var(--grey);
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+main .meaning .definfitions {
+  color: var(--mid-contrast);
+  font-weight: 500;
+}
+main .meaning .definfitions > li {
+  color: var(--mid-contrast);
+  font-weight: 600;
+  margin-bottom: 1rem;
+  margin-left: 1.2rem;
+}
+
+@media (max-width: 275px) {
+  #app {padding: 3rem 10px;}
+}
