@@ -35,69 +35,48 @@ const renderSearchWordHead = ({ phonetic, phonetics, word }: WordData) => {
 }
 
 const renderMeaning = (meaings: Meaning) => {
+  const $main = document.querySelector<HTMLDivElement>('.main')!;
+
+  const $meanings = document.createElement('div');
+  meaings.forEach((meaning) => {
+    const liString = meaning.definitions.reduce((acc, { definition }) => acc += `<li>${definition}</li>`, '');
+    const synonyms = meaning.synonyms.join(', ');
+    const antonyms = meaning.antonyms.join(', ');
+
+    const synonymsString = `<div class="decorator pre-line">Synonyms <span class="primary">${synonyms}</span></div>`;
+    const antonymString = `<div style="margin-top: -10px" class="decorator pre-line">Antonyms <span class="primary"><span>${antonyms}</span></div>`;
+
+    const $meaning = document.createElement('article');
+    $meaning.className = 'meaning';
+    $meaning.innerHTML = `
+      <div class="part-of-speech flex rel">${meaning.partOfSpeech}</div>
+      <p class="decorator">Meaning</p>
+      <ul class="definfitions">
+        ${liString}
+      </ul>
+      <article class="synonyms">
+         ${synonyms && synonymsString}
+        ${antonyms && antonymString}
+      </article>
+    `;
+    $meanings.append($meaning);
+  });
+  $main.append($meanings);
   
 }
 
 export function renderWord(WORD_DATA: WordData): void {
   const $main = document.querySelector<HTMLDivElement>('.main')!;
   $main.innerHTML = '';
-  
+
   renderSearchWordHead(WORD_DATA);
-  
-  // start rendering searchwordhead
-  // console.log(WORD_DATA);
+  renderMeaning(WORD_DATA.meanings);
 
-  // const { license, meanings, phonetic, phonetics, sourceUrls, word } = WORD_DATA;
-  
-  // const $searchWordHead = document.createElement('section');
-  // const phoneticObj = phonetics.find(({ text }) => text);
-
-  // $searchWordHead.className = 'search-word-head flex i-center';
-  // $searchWordHead.innerHTML = `
-  //   <div class="head-wrapper">
-  //     <h2 id="word">${word}</h2>
-  //     <p class="pronunciation primary">${phonetic || phoneticObj?.text}</p>
-  //   </div>
-  // `;
-
-  // const $audioButton = document.createElement('div');
-  // $audioButton.setAttribute('role', 'button');
-  // $audioButton.className = 'audio';
-  // $audioButton.innerHTML = `
-  //   <svg xmlns="http://www.w3.org/2000/svg" width="75" height="75" viewBox="0 0 75 75"><g fill="#A445ED" fill-rule="evenodd"><circle cx="37.5" cy="37.5" r="37.5" opacity=".25"/><path d="M29 27v21l21-10.5z"/></g></svg>
-  // `;
-
-  // const audioObj = phonetics.find(({ audio }) => audio );
-  // $audioButton.addEventListener('click', () => {
-  //   if (audioObj) {
-  //     const playableAudio = new Audio(audioObj.audio);
-  //     playableAudio.play();
-  //   }
-  // });
-
-  // $searchWordHead.append($audioButton);
-  // $main.append($searchWordHead);
-  // end rendering searchwordhead
-
-
-  //   `
-  //   <section class="meanings">
-  //     <article class="meaning">
-  //       <div class="part-of-speech flex rel">noun</div>
-  //       <p class="decorator">Meaning</p>
-  //       <ul class="definfitions">
-  //         <li>(etc.) A set of keys used to operate a typewriter, computer etc.</li>
-  //         <li>A component of many instruments including the pian…cause different tones to be produced when struck.</li>
-  //         <li>A device with keys of a musical keyboard, used to … built into or separate from the keyboard device.</li>
-  //       </ul>
-  //       <article class="synonyms flex">
-  //         <div class="decorator">Synonyms</div>
-  //         <div class="synonyms-list">
-  //         </div>
-  //       </article>
-  //     </article>
-  //   </section>
-  // `;
+  const { sourceUrls } = WORD_DATA;
+  const $sources = document.createElement('span');
+  $sources.className = 'sources';
+  $sources.innerHTML = `Sources <a href="${sourceUrls[0]}">${sourceUrls[0]}</a>`;
+  $main.append($sources);
 }
 
 export function renderError(errorWord: ErrorWord) {

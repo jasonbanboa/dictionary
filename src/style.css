@@ -8,6 +8,7 @@
 button {border: none; background-color: transparent; outline: none; border: none; cursor: pointer;}
 li::marker { color: var(--primary);}
 
+.pre-line {white-space: pre-line;}
 .flex { display: flex; }
 .gap-1 { gap: 1rem; }
 .gap-2 { gap: 2rem; }
@@ -29,17 +30,19 @@ body.light-theme {
   --mid-contrast: #292929; 
   --low-contrast: #E9E9E9;
   --lowest-contrast: #f3f3f3;
-  /* --mid-contrast:  */
   background-color: var(--bg);
   color: var(--high-contrast);
 }
 body.dark-theme {
   --white: #fff;
   --primary: #a445ed;
-  --grey: #757575;
+  --grey: #636363;
   --bg: #050505;
+  --high-contrast: #fff;
+  --mid-contrast: #ccc; 
+  --low-contrast: #2a2a2a;
+  --lowest-contrast: #2a2a2a;
   background-color: var(--bg);
-  /* --mid-contrast:  */
 }
 
 #app {
@@ -54,6 +57,7 @@ header .logo {
   margin-right: auto;
 }
 header .font-selector {
+  color: var(--mid-contrast);
   font-size: 1.25rem;
   font-weight: 600;
   border-right: 1px solid var(--low-contrast);
@@ -102,6 +106,7 @@ main .input-section {
 }
 main form input {
   background-color: var(--lowest-contrast);
+  color: var(--high-contrast);
   border: none;
   border-radius: 15px;
   font-size: 1.1rem;
@@ -122,6 +127,7 @@ main .search-word-head {
   justify-content: space-between;
 }
 main .search-word-head h2 {
+  color: var(--high-contrast);
   font-size: 3rem;
   word-break: break-all;
   margin-bottom: 7px;
@@ -150,7 +156,7 @@ main .meaning .part-of-speech::before {
   content: '';
   background-color: var(--low-contrast);
   right: 0;
-  left: 5rem;
+  left: 8rem;
   top: 50%;
   transform: translateY(100%);
   height: 2px;
@@ -170,6 +176,11 @@ main .meaning .definfitions > li {
   font-weight: 600;
   margin-bottom: 1rem;
   margin-left: 1.2rem;
+}
+main .sources {
+  display: block;
+  margin-top: 2rem;
+  color: var(--grey);
 }
 
 @media (max-width: 275px) {

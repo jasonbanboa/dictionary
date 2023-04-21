@@ -4,8 +4,9 @@ export type Meaning = {
   definitions: {
     definition: string;
     example: string;
-    synonyms: string[];
   }[];
+  synonyms: string[];
+  antonyms: string[];
 }[];
 
 export type WordData = {

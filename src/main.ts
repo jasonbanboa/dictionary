@@ -29,6 +29,7 @@ const handlers = {
     
     if (responseData instanceof Array) {  
       const [ WORD_DATA ] = responseData;
+      console.log(WORD_DATA);
       renderWord(WORD_DATA);
     } else {
       const ERROR_WORD = responseData;
