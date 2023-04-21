@@ -1,18 +1,26 @@
+
+export type Meaning = {
+  partOfSpeech: string;
+  definitions: {
+    definition: string;
+    example: string;
+    synonyms: string[];
+  }[];
+}[];
+
 export type WordData = {
   word: string;
+  phonetic?: string,
   phonetics: {
     text: string;
     audio: string;
   }[];
-  meanings: {
-    partOfSpeech: string;
-    definitions: {
-      definition: string;
-      example: string;
-      synonyms: string[];
-    }[];
-  }[];
+  meanings: Meaning;
   sourceUrls: string[];
+  license: {
+    name: string,
+    url: string,
+  };
 }
 
 export type ErrorWord = {

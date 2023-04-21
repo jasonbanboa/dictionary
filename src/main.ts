@@ -1,6 +1,7 @@
 import './style.css'
 // import { WordData, ErrorWord } from './dictionaryService'
-import fetchWordData from './dictionaryService'
+import fetchWordData, { WordData } from './dictionaryService'
+import { renderError, renderWord } from './renderService';
 
 
 const $toggleButton = document.querySelector<HTMLDivElement>('.toggle-button')!;
@@ -25,20 +26,22 @@ const handlers = {
     const searchWord = $form.search.value.trim();
     if (!searchWord) return;
     const responseData = await fetchWordData(searchWord);
-    if (responseData instanceof Array)  {
-      const [ WORDDATA ] = responseData;
-      console.log(WORDDATA);     
+    
+    if (responseData instanceof Array) {  
+      const [ WORD_DATA ] = responseData;
+      renderWord(WORD_DATA);
     } else {
-      const WORDERROR = responseData;
-      console.log(WORDERROR);
+      const ERROR_WORD = responseData;
+      renderError(ERROR_WORD);
     }
+    
   }
 } 
 
 
 async function main() {
-  // const responseData = await fetchWordData('hello');
-  
+  const [ WORD_DATA ] = await fetchWordData('keyboard') as WordData[];  
+    renderWord(WORD_DATA);
 }
 
 
