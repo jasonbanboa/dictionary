@@ -6,6 +6,8 @@ import { renderError, renderWord } from './renderService';
 
 const $toggleButton = document.querySelector<HTMLDivElement>('.toggle-button')!;
 const $form = document.querySelector<HTMLFormElement>('form')!;
+const $fontSelector = document.querySelector<HTMLDivElement>('.font-selector')!;
+const $fontSelect = document.querySelector<HTMLDivElement>('.font-select')!;
 
 
 const handlers = {
@@ -35,7 +37,10 @@ const handlers = {
       const ERROR_WORD = responseData;
       renderError(ERROR_WORD);
     }
-    
+  },
+  onFontThemeClick: (e: Event) => {
+    if (e.target === $fontSelect) return;
+    $fontSelect.classList.contains('none') ? $fontSelect.classList.replace('none', 'block') : $fontSelect.classList.replace('block', 'none');
   }
 } 
 
@@ -50,4 +55,5 @@ window.onload = () => {
   main();
   $toggleButton.addEventListener('click', handlers.onThemeButtonClick);
   $form.addEventListener('submit', handlers.onFormSubmit);
+  $fontSelector.addEventListener('click', handlers.onFontThemeClick);
 }

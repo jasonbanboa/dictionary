@@ -17,6 +17,8 @@ li::marker { color: var(--primary);}
 .j-center { justify-content: center; }
 .rel { position: relative; }
 .abs { position: absolute; }
+.none {display: none;}
+.block {display: block;}
 
 body {
   transition: all .25s;
@@ -30,6 +32,7 @@ body.light-theme {
   --mid-contrast: #292929; 
   --low-contrast: #E9E9E9;
   --lowest-contrast: #f3f3f3;
+  --high-contrast-low-opacity: #1f1f1f16;
   background-color: var(--bg);
   color: var(--high-contrast);
 }
@@ -42,6 +45,7 @@ body.dark-theme {
   --mid-contrast: #ccc; 
   --low-contrast: #2a2a2a;
   --lowest-contrast: #2a2a2a;
+  --high-contrast-low-opacity: #a445ed5b;
   background-color: var(--bg);
 }
 
@@ -62,10 +66,22 @@ header .font-selector {
   font-weight: 600;
   border-right: 1px solid var(--low-contrast);
   padding-right: 1rem;
+  cursor: pointer;
+}
+header .font-select {
+  transform: translate(-60px, 10px);
+  background: var(--bg);
+  padding: 1.5rem;
+  z-index: 2;
+  width: 150px;
+  height: 129px;
+  box-shadow: 0px 0px 5px 5px var(--high-contrast-low-opacity);
+  border-radius: 5px;
 }
 header .font-selector > span {
   padding-right: 10px;
 }
+
 header .theme-toggle .toggle-button {
   border-radius: 30px;
   height: 25px;
@@ -111,10 +127,13 @@ main form input {
   border-radius: 15px;
   font-size: 1.1rem;
   width: 100%;
-  outline: none;
   height: 50px;
   padding-left: 20px;
   padding-right: 50px;
+}
+main form input:focus-visible {
+  
+  outline-color: var(--primary);
 }
 main form .abs {
   right: 20px;
@@ -181,6 +200,9 @@ main .sources {
   display: block;
   margin-top: 2rem;
   color: var(--grey);
+}
+main .sources svg {
+  transform: translate(5px, 1px);
 }
 
 @media (max-width: 275px) {
