@@ -4,19 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./src/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
     <title>dictionary</title>
   </head>
-  <body class="light-theme">
+  <body class="light-theme sans-serif">
     <div id="app">
       <header class="flex i-center gap-1">
         <div class="logo"><svg xmlns="http://www.w3.org/2000/svg" width="34" height="38" viewBox="0 0 34 38"><g fill="none" fill-rule="evenodd" stroke="#838383" stroke-linecap="round" stroke-width="1.5"><path d="M1 33V5a4 4 0 0 1 4-4h26.8A1.2 1.2 0 0 1 33 2.2v26.228M5 29h28M5 37h28"/><path stroke-linejoin="round" d="M5 37a4 4 0 1 1 0-8"/><path d="M11 9h12"/></g></svg></div>
         <div class="font-selector rel">
-          <span>Serif</span>
+          <span id="current-font">Sans Serif</span>
           <svg xmlns="http://www.w3.org/2000/svg" width="14" height="8" viewBox="0 0 14 8"><path fill="none" stroke="#A445ED" stroke-width="1.5" d="m1 1 6 6 6-6"/></svg>
           <div class="font-select abs none">
-            <div>Serif</div>
-            <div>San Serif</div>
-            <div>Mono</div>
+            <div role="button" class="font" data-font="serif">serif</div>
+            <div role="button" class="font primary" data-font="sans-serif">sans-serif</div>
+            <div role="button" class="font" data-font="mono">mono</div>
           </div>
         </div>
         <div class="theme-toggle flex gap-1">
