@@ -1,6 +1,7 @@
 
 import { WordData, ErrorWord, Meaning } from './dictionaryService'
 
+
 const renderSearchWordHead = ({ phonetic, phonetics, word }: WordData) => {
   const $main = document.querySelector<HTMLDivElement>('.main')!;
 
@@ -11,7 +12,7 @@ const renderSearchWordHead = ({ phonetic, phonetics, word }: WordData) => {
   $searchWordHead.innerHTML = `
     <div class="head-wrapper">
       <h2 id="word">${word}</h2>
-      <p class="pronunciation primary">${phonetic || phoneticObj?.text}</p>
+      <p class="pronunciation primary">${phonetic || phoneticObj?.text || 'No Results'}</p>
     </div>
   `;
 
@@ -80,5 +81,12 @@ export function renderWord(WORD_DATA: WordData): void {
 }
 
 export function renderError(errorWord: ErrorWord) {
-  console.log(errorWord);
+  const $main = document.querySelector<HTMLDivElement>('.main')!;
+  $main.innerHTML = `
+    <div class="error-wrapper">
+      <p class="icon text-center">😕</p>
+      <h2 class="text-center"><strong>${errorWord.title}</strong></h2>
+      <p class="text-center">${errorWord.message}</p>
+    </div>
+  `
 }

@@ -3,6 +3,7 @@
   padding: 0;
   margin: 0;
   color: inherit;
+  word-break: break-word;
 }
 
 button {border: none; background-color: transparent; outline: none; border: none; cursor: pointer;}
@@ -19,6 +20,7 @@ li::marker { color: var(--primary);}
 .abs { position: absolute; }
 .none {display: none;}
 .block {display: block;}
+.text-center {text-align: center;}
 
 body {
   transition: all .25s;
@@ -105,10 +107,10 @@ header .theme-toggle .toggle-button {
   display: flex;
   align-items: center;
 }
-header .theme-toggle .light-theme {
+.light-theme .theme-toggle .toggle-button {
   background-color: var(--grey);
 }
-header .theme-toggle .dark-theme {
+.dark-theme .theme-toggle .toggle-button {
   background-color: var(--primary);
 }
 header .theme-toggle .toggle-button > .slider {
@@ -120,10 +122,10 @@ header .theme-toggle .toggle-button > .slider {
   cursor: pointer;
   background-color: var(--white);
 }
-header .theme-toggle .light-theme .slider {
+.light-theme .theme-toggle .slider {
   transform: translateX(-4px);
 }
-header .theme-toggle .dark-theme .slider {
+.dark-theme .theme-toggle .slider {
   transform: translateX(19px);
 }
 header .theme-toggle svg {
@@ -188,8 +190,8 @@ main .meaning .part-of-speech::before {
   position: absolute;
   content: '';
   background-color: var(--low-contrast);
+  left: 9rem;
   right: 0;
-  left: 8rem;
   top: 50%;
   transform: translateY(100%);
   height: 2px;
@@ -218,6 +220,18 @@ main .sources {
 }
 main .sources svg {
   transform: translate(5px, 1px);
+}
+main .error-wrapper {
+  color: var(--high-contrast);
+  font-size: 1.35rem;
+  margin-top: 4rem;
+}
+main .error-wrapper .icon {
+  font-size: 5rem;
+}
+main .error-wrapper h2 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
 }
 
 @media (max-width: 275px) {
