@@ -10,7 +10,7 @@
   },
   "devDependencies": {
     "typescript": "^4.9.3",
-    "vite": "^4.2.0"
+    "vite": "^4.5.2"
   },
   "description": "dictionary web app using the Dictionary API\r https://api.dictionaryapi.dev/api/v2/entries/en/`<str:word>`",
   "main": "index.js",
